@@ -30,6 +30,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   background: #0a0a0a;
+  overflow-x: hidden;
 }
 
 .gradient-bg {
