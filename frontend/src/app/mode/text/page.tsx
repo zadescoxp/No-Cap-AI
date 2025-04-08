@@ -27,6 +27,9 @@ export default function TextMode() {
 
   const handleRequest = async () => {
     setLoading(true);
+    setRagResponse(null);
+    setLabel("");
+    setScore(0);
     const idToken = await user?.getIdToken();
 
     if (website) {
