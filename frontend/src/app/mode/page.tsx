@@ -58,15 +58,15 @@ const Card = ({ title, description, image, link }: CardProps) => {
   return (
     <Link
       href={link}
-      className="group w-1/4 h-[28rem] flex flex-col items-start justify-around gap-10 bg-[#222] text-white rounded-lg px-8 py-5 hover:bg-[#333] hover:scale-[1.01] transition-all hover:shadow-sm hover:shadow-gray-700"
+      className="group w-1/4 h-[28rem] relative overflow-hidden flex flex-col items-start justify-around gap-10 bg-linear-to-br from-[#222] to-[#333] text-white rounded-lg px-8 py-5 hover:bg-[#333] hover:scale-[1.01] transition-all hover:shadow-sm hover:shadow-gray-700"
     >
       <div className="flex items-start flex-col justify-center gap-5">
         <Image
           src={image}
           alt={title}
-          width={50}
-          height={50}
-          className="rounded-lg"
+          width={200}
+          height={200}
+          className="rounded-lg absolute -top-10 -left-10 opacity-40 group-hover:scale-105 transition-all"
         />
         <h2 className="text-3xl font-bold">{title}</h2>
         <p className="font-medium text-[#b1b1b1]">{description}</p>
