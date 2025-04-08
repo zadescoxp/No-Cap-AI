@@ -99,7 +99,7 @@ export default function TextMode() {
         if (data.label === "LABEL_1") {
           setLabel("Fax");
         }
-        if (label === "LABEL_0") {
+        if (data.label === "LABEL_0") {
           setLabel("Cap");
         }
 
