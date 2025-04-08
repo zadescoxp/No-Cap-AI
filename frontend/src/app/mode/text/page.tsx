@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { auth } from "@/firebase/config";
 import AuthMiddleware from "../../../../utils/middleware";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
 
 export default function TextMode() {
   const user = auth.currentUser;
@@ -14,7 +17,13 @@ export default function TextMode() {
 
   const [label, setLabel] = useState("");
   const [score, setScore] = useState(0);
-  const [ragResponse, setRagResponse] = useState(null);
+  const [ragResponse, setRagResponse] = useState<string | null>(null);
+
+  const parser = async (markdown: string) => {
+    const { content } = matter(markdown);
+    const processedContent = await remark().use(html).process(content);
+    return processedContent.toString();
+  };
 
   const handleRequest = async () => {
     setLoading(true);
@@ -73,7 +82,8 @@ export default function TextMode() {
       const data = await response.json();
       console.log("Response:", data);
       if (response.ok) {
-        setRagResponse(data.response);
+        const parsed = await parser(data.response);
+        setRagResponse(parsed);
         setLoading(false);
       }
     } else {
@@ -180,7 +190,12 @@ export default function TextMode() {
             {ragResponse && (
               <div className="mt-5 bg-[#333] p-5 rounded-lg w-full">
                 <h2 className="text-xl font-semibold">Deep Dive Results</h2>
-                <p>{ragResponse}</p>
+                <div
+                  className="mt-4 prose prose-invert"
+                  dangerouslySetInnerHTML={{
+                    __html: ragResponse,
+                  }}
+                />
               </div>
             )}
           </div>
