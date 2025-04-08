@@ -130,7 +130,9 @@ export default function ImagePage() {
     <AuthMiddleware>
       <div className="w-screen min-h-screen flex items-center justify-center font-sans">
         <div className="w-1/2 h-auto flex flex-col items-start justify-center gap-5 p-8 rounded-lg shadow-lg">
-          <h1 className="text-4xl font-semibold">Image Analysis</h1>
+          <h1 className="text-4xl font-semibold">
+            Yo anything up with the images ?
+          </h1>
           <form onSubmit={handleSubmit} className="w-full space-y-4">
             <div className="flex gap-4">
               <button
