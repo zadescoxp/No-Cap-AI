@@ -14,9 +14,9 @@ def deep_dive(text):
     So this is a news, article or a blog. 
     {text}
     Go on web and search if this is true or not and also provide the sources of the information you have analyzed to get to this answer.
-    You answer should be in the following format:
-    <answer>True/False</answer>
-    <sources>[Sources you had to look into]</sources>"""
+    Your answer should be in the following format:
+    [Answer in real or fake]
+    [Sources of the information]"""
     )
     return response.output_text
 
